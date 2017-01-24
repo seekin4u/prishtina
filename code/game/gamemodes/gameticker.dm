@@ -129,7 +129,7 @@ var/global/datum/controller/gameticker/ticker
 			if (S.name != "AI")
 				qdel(S)
 		world << "<FONT color='blue'><B>Enjoy the game!</B></FONT>"
-		//world << sound('sound/AI/welcome.ogg') // Skie
+		world << sound('sound/misc/boatswain.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		//Holiday_Game_Start()
 
@@ -438,5 +438,7 @@ var/global/datum/controller/gameticker/ticker
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
+
+	world << sound('sound/misc/sadtrombone.ogg')
 
 	return 1

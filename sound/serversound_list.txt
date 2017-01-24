@@ -12,3 +12,4 @@ sound/music/traitor.ogg
 sound/items/bikehorn.ogg
 sound/effects/siren.ogg
 sound/effects/A10.ogg
+sound/misc/sadtrombone.ogg

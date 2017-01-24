@@ -10,7 +10,8 @@ var/list/interior_areas = list(/area/prishtina/dungeons,
 							/area/prishtina/aeroport_in,
 							/area/prishtina/south_farm,
 							/area/prishtina/west_village,
-							/area/prishtina/houses
+							/area/prishtina/houses,
+							/area/prishtina/tunnel
 							)
 
 /turf

@@ -54,6 +54,9 @@ var/global/list/additional_antag_types = list()
 	var/event_delay_mod_moderate             // Modifies the timing of random events.
 	var/event_delay_mod_major                // As above.
 
+	var/mission_started = 0
+	var/mission_start_time = 0
+
 	var/uplink_welcome = "Illegal Uplink Console:"
 	var/uplink_uses = 12
 
@@ -263,7 +266,7 @@ var/global/list/additional_antag_types = list()
 /datum/game_mode/proc/pre_setup()
 	for(var/datum/antagonist/antag in antag_templates)
 		antag.build_candidate_list() //compile a list of all eligible candidates
-		
+
 		//antag roles that replace jobs need to be assigned before the job controller hands out jobs.
 		if(antag.flags & ANTAG_OVERRIDE_JOB)
 			antag.attempt_spawn() //select antags to be spawned
@@ -276,10 +279,10 @@ var/global/list/additional_antag_types = list()
 	spawn (ROUNDSTART_LOGOUT_REPORT_TIME)
 		display_roundstart_logout_report()
 
-	spawn (rand(waittime_l, waittime_h))
-		send_intercept()
-		spawn(rand(100,150))
-			announce_ert_disabled()
+	//spawn (rand(waittime_l, waittime_h))
+	//	send_intercept()
+	//	spawn(rand(100,150))
+	//		announce_ert_disabled()
 
 	//Assign all antag types for this game mode. Any players spawned as antags earlier should have been removed from the pending list, so no need to worry about those.
 	for(var/datum/antagonist/antag in antag_templates)

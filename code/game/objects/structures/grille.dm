@@ -106,11 +106,13 @@
 			user << "\blue You started cut the [name]."
 			for(var/i = 0; i < 5; i++)
 				playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
+				user.do_attack_animation(src)
 				if(!do_after(user, 10))
 					user << "\red You must stand still while do this."
 					return
 			user << "\blue You have cut the [name]."
 			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
+			user.do_attack_animation(src)
 			PoolOrNew(/obj/item/stack/rods, list(get_turf(src), destroyed ? 1 : 2))
 			qdel(src)
 			return

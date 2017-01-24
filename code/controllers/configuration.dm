@@ -206,6 +206,8 @@ var/list/gamemode_cache = list()
 	var/starlight = 0	// Whether space turfs have ambient light or not
 	var/starlight_color = "#FFFFFF"
 
+	var/special_squads = 0
+
 	var/list/ert_species = list("Human")
 
 	var/law_zero = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
@@ -683,6 +685,9 @@ var/list/gamemode_cache = list()
 
 				if("aggressive_changelog")
 					config.aggressive_changelog = 1
+
+				if("special_squads")
+					config.special_squads = 1
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")

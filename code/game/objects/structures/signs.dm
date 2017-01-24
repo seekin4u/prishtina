@@ -216,9 +216,11 @@
 /obj/structure/sign/flag/attack_hand(mob/user as mob)
 	if(!ripped)
 		playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, 1)
+		user.do_attack_animation(src)
 		for(var/i = 0 to 3)
 			if(do_after(user, 10))
 				playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, 1)
+				user.do_attack_animation(src)
 			else
 				return
 		visible_message("<span class='warning'>[user] rips [src]!</span>" )

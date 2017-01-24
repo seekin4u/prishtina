@@ -122,7 +122,7 @@
 /obj/item/weapon/gauze_pack/attack_self(mob/user as mob)
 	if(packed)
 		if(prob(50))
-			packed = 1
+			packed = 0
 			if(rip_sound)
 				playsound(src.loc, rip_sound, 50, 1)
 			if(contents.len)

@@ -60,8 +60,8 @@
 	flag = ENGINEER
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	selection_color = "#770e0e"
 	access = list(access_ru_soldier, access_ru_medic)
 	minimal_access = list(access_ru_soldier, access_ru_medic)
@@ -109,8 +109,8 @@
 	flag = CHIEF
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	selection_color = "#770e0e"
 	access = list(access_ru_soldier, access_ru_engineer)
 	minimal_access = list(access_ru_soldier, access_ru_engineer)
@@ -137,8 +137,8 @@
 	flag = OFFICER
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	selection_color = "#770e0e"
 	access = list(access_ru_soldier, access_ru_heavy_weapon)
 	minimal_access = list(access_ru_soldier, access_ru_heavy_weapon)
@@ -165,8 +165,8 @@
 	flag = CAPTAIN
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	selection_color = "#770e0e"
 	access = list(access_ru_soldier, access_ru_cook)
 	minimal_access = list(access_ru_soldier, access_ru_cook)

@@ -18,7 +18,7 @@ var/global/datum/controller/occupations/job_master
 
 	var/autobalance = 1
 
-	var/list/fireteams = list()
+	var/list/all_fireteams = list()
 	var/list/not_full_fireteams = list()
 
 
@@ -44,38 +44,20 @@ var/global/datum/controller/occupations/job_master
 			if(job.faction != faction)	continue
 			occupations += job
 
-		fireteams = list()
+		all_fireteams = list()
 		not_full_fireteams = list()
 
-		var/datum/fireteam/ft
+		add_fireteam(/datum/fireteam/american_squad)
+		add_fireteam(/datum/fireteam/american_squad)
 
-		ft = new /datum/fireteam/american_squad()
-		ft.fireteam_id = 1
-		not_full_fireteams.Add(ft)
+		add_fireteam(/datum/fireteam/russian_squad)
+		add_fireteam(/datum/fireteam/russian_squad)
 
-		//ft = new /datum/fireteam/american_squad()
-		//ft.fireteam_id = 2
-		//not_full_fireteams.Add(ft)
-
-		ft = new /datum/fireteam/russian_squad()
-		ft.fireteam_id = 1
-		not_full_fireteams.Add(ft)
-
-		ft = new /datum/fireteam/russian_gru()
-		ft.fireteam_id = 1
-		not_full_fireteams.Add(ft)
-
-		ft = new /datum/fireteam/american_recon()
-		ft.fireteam_id = 1
-		not_full_fireteams.Add(ft)
-
-		for(var/datum/fireteam/ft_init in not_full_fireteams)
-			ft_init.init()
-			fireteams.Add(ft_init)
-
+		if(config.special_squads)
+			add_fireteam(/datum/fireteam/russian_gru)
+			add_fireteam(/datum/fireteam/american_recon)
 
 		return 1
-
 
 	proc/Debug(var/text)
 		if(!Debug2)	return 0
@@ -847,6 +829,29 @@ var/global/datum/controller/occupations/job_master
 	if(side == CIVILIAN)
 		return (enforce_count + ruforce_count) / 5 > civilian_count
 	return 0
+
+/datum/controller/occupations/proc/add_fireteam(fireteam_type)
+	var/datum/fireteam/newFT = new fireteam_type()
+
+	if(!istype(newFT))
+		del(newFT)
+		return
+
+	var/maxID = 0
+	for(var/datum/fireteam/ft in all_fireteams)
+		if(ft.type != newFT.type)
+			continue
+		if(ft.id >= maxID)
+			maxID = ft.id
+
+	if(maxID >= newFT.max_fireteams)
+		return
+
+	newFT.id = maxID + 1
+
+	all_fireteams.Add(newFT)
+	not_full_fireteams.Add(newFT)
+	newFT.init()
 
 /*
 /datum/controller/occupations/proc/spawn_crate(var/datum/job/job)

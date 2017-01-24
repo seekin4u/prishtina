@@ -7,7 +7,7 @@
 
 	var/can_set_name = null
 	var/name_set = 0
-	var/fireteam_id = 1
+	var/id = 1
 	var/squad_type
 	var/max_fireteams = -1
 
@@ -22,7 +22,7 @@
 	greet_and_equip_member(H)
 	if(required.len <= 0)
 		trigger_full()
-	if(job.type == can_set_name)
+	if(!name_set && job.type == can_set_name)
 		name_set = 1
 		var/new_name = input(H, "Enter new squad name. Leave empty to use default.", "Name", "") as text
 		new_name = sanitizeName(new_name)
@@ -37,14 +37,14 @@
 		H << "You are now in the [squad_type] [code]"
 	else
 		H << "You are now in the [squad_type] [code] \"[name]\""
-	var/obj/item/weapon/card/id/id = H.wear_id
-	if(istype(id))
-		if(fireteam_id > 0 & fireteam_access.len >= fireteam_id)
-			id.access.Add(fireteam_access[fireteam_id])
+	var/obj/item/weapon/card/id/id_card = H.wear_id
+	if(istype(id_card))
+		if(id > 0 & fireteam_access.len >= id)
+			id_card.access.Add(fireteam_access[id])
 		if(code)
-			id.name = "[id.registered_name]'s ID Card ([code]'s [id.assignment])"
+			id_card.name = "[id_card.registered_name]'s ID Card ([code]'s [id_card.assignment])"
 		else
-			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
+			id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"
 
 /datum/fireteam/proc/init()
 	for(var/type_name in required)
@@ -58,22 +58,14 @@
 /datum/fireteam/proc/trigger_full()
 	job_master.not_full_fireteams -= src
 
-	if(max_fireteams != -1 && fireteam_id >= max_fireteams)
-		return 0
-
-	var/datum/fireteam/new_fireteam = new src.type()
-	new_fireteam.fireteam_id = fireteam_id + 1
-	new_fireteam.init()
-
-	job_master.fireteams += new_fireteam
-	job_master.not_full_fireteams += new_fireteam
+	job_master.add_fireteam(type)
 	return 1
 
 /datum/fireteam/proc/is_full()
 	return required.len <= 0
 
 /datum/fireteam/proc/get_code()
-	var/c = fireteam_codes[fireteam_id]
+	var/c = fireteam_codes[id]
 	if(!c)
 		return ""
 	return c
@@ -130,7 +122,6 @@
 
 /datum/fireteam/russian_gru
 	required = list(/datum/job/gru,
-					/datum/job/gru,
 					/datum/job/gru,
 					/datum/job/gru
 					)

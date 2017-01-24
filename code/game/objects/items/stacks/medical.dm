@@ -24,6 +24,10 @@
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
 
+		if(!affecting)
+			user << "\red He lost that limb!"
+			return
+
 		if(affecting.name == "head")
 			if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
 				user << "\red You can't apply [src] through [H.head]!"
@@ -63,6 +67,10 @@
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+
+		if(!affecting)
+			user << "\red He lost that limb!"
+			return
 
 		if(affecting.open == 0)
 			if(!affecting.bandage())

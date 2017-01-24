@@ -369,8 +369,8 @@
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
 
-		if (deathtime < 0)
-			usr << "You must wait 0 minutes to respawn!"
+		if (deathtime < 10 MINUTES)
+			usr << "You must wait 10 minutes to respawn!"
 			return
 		else
 			usr << "You can respawn now, enjoy your new life!"
@@ -1072,9 +1072,10 @@ mob/proc/yank_out_object()
 	if(using_object)
 		if(using_object == O)
 			return
-		using_object.stopped_using(src)
+		var/obj/UO = using_object
 		using_object.used_by_mob = null
 		using_object = null
+		UO.stopped_using(src)
 	if(O)
 		if(O.used_by_mob)
 			O.used_by_mob.use_object(null)

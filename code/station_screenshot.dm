@@ -105,7 +105,8 @@ var/building_started_at = 0
 			for(var/y = 0; y < chunk_side; y++)
 				tiles_processed++
 				var/turf/T = locate(x + t_offsetx, y + t_offsety, z)
-				var/icon/turf_icon = getFlatIcon(T)
+				var/icon/turf_icon
+				turf_icon = getFlatIcon(T)
 				I.Blend(turf_icon, blendMode2iconMode(T.blend_mode), x * 32 + 1, y * 32 + 1)
 
 				del(turf_icon)
@@ -118,6 +119,9 @@ var/building_started_at = 0
 			for(var/y = 0; y < chunk_side; y++)
 				tiles_processed++
 				var/turf/T = locate(x + t_offsetx, y + t_offsety, z)
+
+				if(T.interior)
+					continue
 
 				var/list/atoms = list()
 				atoms.Add(T)

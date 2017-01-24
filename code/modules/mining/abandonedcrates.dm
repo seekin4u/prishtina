@@ -166,12 +166,12 @@
 			user << "<span class='danger'>The crate's anti-tamper system activates!</span>"
 			var/turf/T = get_turf(src.loc)
 			explosion(T, 0, 0, 1, 2)
-			del(src)
+			qdel(src)
 
 /obj/structure/closet/crate/secure/loot/proc/check_input(var/input)
 	if(length(input) != codelen)
 		return 0
-	
+
 	. = 1
 	lastattempt.Cut()
 	for(var/i in 1 to codelen)
@@ -191,7 +191,7 @@
 			if(lastattempt.len)
 				var/bulls = 0
 				var/cows = 0
-				
+
 				var/list/code_contents = code.Copy()
 				for(var/i in 1 to codelen)
 					if(lastattempt[i] == code[i])

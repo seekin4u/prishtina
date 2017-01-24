@@ -17,6 +17,7 @@
 		new /obj/item/device/flashlight/flare(src)
 		new /obj/item/device/flashlight/flare(src)
 		new /obj/item/weapon/grenade/explosive/f1(src)
+		new /obj/item/weapon/storage/box/med_kit_ruforce/full(src)
 		////new /obj/item/clothing/mask/gas(src)
 
 /obj/structure/closet/secure_closet/ru_medic
@@ -134,7 +135,7 @@
 		new /obj/item/weapon/paper/map(src)
 		//new /obj/item/clothing/mask/gas(src)
 
-		new /obj/item/weapon/reagent_containers/hypospray/autoinjector/survival(src)
+		new /obj/item/weapon/storage/box/med_kit_ruforce/full(src)
 		new /obj/item/clothing/glasses/night(src)
 
 //NATO HERE NATO HERE NATO HERE NATO HERE
@@ -172,11 +173,15 @@
 		new /obj/item/clothing/shoes/jackboots(src)
 		new /obj/item/clothing/head/helmet/tactical/nato(src)
 		new /obj/item/clothing/suit/storage/vest/heavy/nato(src)
-		new /obj/item/weapon/gun/projectile/automatic/m4(src)
+		//new /obj/item/weapon/gun/projectile/automatic/m4(src)
 		//new /obj/item/weapon/storage/belt/medical(src)
 		new /obj/item/weapon/storage/belt/security(src)
-		for(var/i = 0; i < 6; i++)
-			new /obj/item/ammo_magazine/a556/m4(src)
+		//for(var/i = 0; i < 6; i++)
+		//	new /obj/item/ammo_magazine/a556/m4(src)
+		new /obj/item/clothing/accessory/holster(src)
+		new /obj/item/weapon/gun/projectile/colt(src)
+		new /obj/item/ammo_magazine/c45m(src)
+		new /obj/item/ammo_magazine/c45m(src)
 		new /obj/item/device/radio/nato(src)
 		new /obj/item/device/flashlight/flare(src)
 		new /obj/item/device/flashlight/flare(src)

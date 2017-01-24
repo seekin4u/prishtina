@@ -498,28 +498,96 @@
 //		new /obj/item/weapon/pestspray(src)
 //		new /obj/item/weapon/pestspray(src)
 
-/obj/structure/closet/crate/at4crate
+/obj/structure/closet/crate/milcrate
+	name = "military crate"
+	desc = "Usual military crate."
+	icon_state = "mil_crate_closed"
+	icon_opened = "mil_crate_opened"
+	icon_closed = "mil_crate_closed"
+
+/obj/structure/closet/crate/milcrate/at4crate
 	name = "AT-4 crate"
-	icon_state = "mil_crate_closed"
-	icon_opened = "mil_crate_opened"
-	icon_closed = "mil_crate_closed"
+	desc = "Usual military crate. Marked as \"explosives\"."
 
-/obj/structure/closet/crate/at4crate/New()
+/obj/structure/closet/crate/milcrate/at4crate/New()
 	..()
 	new /obj/item/weapon/gun/projectile/rocket/one_use/at4(src)
 	new /obj/item/weapon/gun/projectile/rocket/one_use/at4(src)
 	new /obj/item/weapon/gun/projectile/rocket/one_use/at4(src)
 	new /obj/item/weapon/gun/projectile/rocket/one_use/at4(src)
 
-/obj/structure/closet/crate/rpg26crate
+/obj/structure/closet/crate/milcrate/rpg26crate
 	name = "RPG-26 crate"
-	icon_state = "mil_crate_closed"
-	icon_opened = "mil_crate_opened"
-	icon_closed = "mil_crate_closed"
+	desc = "Usual military crate. Marked as \"explosives\"."
 
-/obj/structure/closet/crate/rpg26crate/New()
+/obj/structure/closet/crate/milcrate/rpg26crate/New()
 	..()
 	new /obj/item/weapon/gun/projectile/rocket/one_use/rpg26(src)
 	new /obj/item/weapon/gun/projectile/rocket/one_use/rpg26(src)
 	new /obj/item/weapon/gun/projectile/rocket/one_use/rpg26(src)
 	new /obj/item/weapon/gun/projectile/rocket/one_use/rpg26(src)
+
+/obj/structure/closet/crate/milcrate/foodcrate
+	name = "military food supply crate"
+	desc = "Usual military crate. Marked as \"food supplies\"."
+
+/obj/structure/closet/crate/milcrate/foodcrate/New()
+	..()
+	for(var/i = 1 to 10)
+		new /obj/item/weapon/reagent_containers/food/drinks/cans/tushenka(src)
+		new /obj/item/weapon/reagent_containers/food/drinks/cans/sguschenka(src)
+		var/obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask/flask = new(src)
+		var/reagent_type = pick("tea", "water", "icetea", "coffee")
+		flask.reagents.add_reagent(reagent_type, 60)
+		flask.name += " ([reagent_type])"
+
+/obj/structure/closet/crate/milcrate/ammocrate
+	name = "ammo supply crate"
+	desc = "Usual military crate. Marked as \"ammunition\"."
+
+/obj/structure/closet/crate/milcrate/ammocrate/New()
+	..()
+	for(var/i = 1 to 20)
+		new /obj/item/ammo_magazine/a762/akm(src)
+	for(var/i = 1 to 5)
+		new /obj/item/ammo_magazine/a762/pkm(src)
+	for(var/i = 1 to 8)
+		new /obj/item/weapon/grenade/explosive/f1(src)
+	for(var/i = 1 to 2)
+		new /obj/item/ammo_magazine/mc9mm(src)
+
+/obj/structure/closet/crate/milcrate/emergencymedicalcrate
+	name = "emergency medical supplies crate"
+	desc = "Usual military crate. Marked as \"200, 300\"."
+
+/obj/structure/closet/crate/milcrate/emergencymedicalcrate/New()
+	..()
+	for(var/i = 1 to 3)
+		new /obj/item/weapon/storage/firstaid/surgery(src)
+	for(var/i = 1 to 5)
+		new /obj/item/roller(src)
+	for(var/i = 1 to 5)
+		new /obj/item/weapon/storage/box/bodybags(src)
+	for(var/i = 1 to 2)
+		new /obj/machinery/iv_drip(src)
+	for(var/i = 1 to 10)
+		new /obj/item/weapon/reagent_containers/blood/OMinus(src)
+
+/obj/structure/closet/crate/milcrate/medicinecrate
+	name = "medicine supplies crate"
+	desc = "Usual military crate. Marked as \"medicine\"."
+
+/obj/structure/closet/crate/milcrate/medicinecrate/New()
+	..()
+	for(var/i = 1 to 10)
+		new /obj/item/weapon/gauze_pack/bint(src)
+	for(var/i = 1 to 2)
+		new /obj/item/weapon/pill_pack/tramadol(src)
+	for(var/i = 1 to 2)
+		new /obj/item/weapon/pill_pack/bicaridine(src)
+	for(var/i = 1 to 2)
+		new /obj/item/weapon/pill_pack/dexalin(src)
+	for(var/i = 1 to 5)
+		new /obj/item/weapon/reagent_containers/hypospray/autoinjector/survival/peridaxon(src)
+	for(var/i = 1 to 5)
+		new /obj/item/weapon/reagent_containers/hypospray/autoinjector/survival/inaprovaline(src)

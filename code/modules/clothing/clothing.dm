@@ -454,13 +454,7 @@ BLIND     // can't see anything
 		var/obj/item/clothing/accessory/A = I
 		if(can_attach_accessory(A))
 			user.drop_item()
-			accessories += A
-			A.on_attached(src, user)
-
-			if(istype(loc, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = loc
-				H.update_inv_w_uniform()
-
+			attach_accessory(A, user)
 			return
 		else
 			user << "<span class='notice'>You cannot attach more accessories of this type to [src].</span>"
@@ -471,6 +465,14 @@ BLIND     // can't see anything
 		return
 
 	..()
+
+/obj/item/clothing/under/proc/attach_accessory(obj/item/clothing/accessory/A, mob/user)
+	accessories += A
+	A.on_attached(src, user)
+
+	if(istype(loc, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_w_uniform()
 
 /obj/item/clothing/under/attack_hand(mob/user as mob)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)

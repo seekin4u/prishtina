@@ -283,7 +283,8 @@ var/global/datum/shuttle_controller/shuttle_controller
 		"West Village Landing Site" = locate(/area/prishtina/helicopter_1/west_village),
 		"West Forest Landing Site" = locate(/area/prishtina/helicopter_1/west_forest),
 		"South Farm Landing Site" = locate(/area/prishtina/helicopter_1/south_farm),
-		"Central Forest Landing Site" = locate(/area/prishtina/helicopter_1/central_forest)
+		"Central Forest Landing Site" = locate(/area/prishtina/helicopter_1/central_forest),
+		"East Road Landing Site" = locate(/area/prishtina/helicopter_1/east_road)
 		)
 
 	shuttles["Helicopter1"] = MS
@@ -300,7 +301,8 @@ var/global/datum/shuttle_controller/shuttle_controller
 		"West Village Landing Site" = locate(/area/prishtina/helicopter_2/west_village),
 		"West Forest Landing Site" = locate(/area/prishtina/helicopter_2/west_forest),
 		"South Farm Landing Site" = locate(/area/prishtina/helicopter_2/south_farm),
-		"Central Forest Landing Site" = locate(/area/prishtina/helicopter_2/central_forest)
+		"Central Forest Landing Site" = locate(/area/prishtina/helicopter_2/central_forest),
+		"East Road Landing Site" = locate(/area/prishtina/helicopter_2/east_road)
 		)
 
 	shuttles["Helicopter2"] = MS

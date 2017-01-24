@@ -120,11 +120,12 @@
 		/obj/item/device/radio/headset,
 		/obj/item/device/hailer,
 		/obj/item/device/megaphone,
-		/obj/item/weapon/melee,,
+		/obj/item/weapon/melee,
 		/obj/item/taperoll/police,
 		/obj/item/clothing/mask/gas,
-		/obj/item/,
-		/obj/item/weapon/plastique
+		/obj/item/weapon/plastique,
+		/obj/item/weapon/storage/box/med_kit_ruforce,
+		/obj/item/weapon/shovel/spade
 		)
 
 /obj/item/weapon/storage/belt/soulstone

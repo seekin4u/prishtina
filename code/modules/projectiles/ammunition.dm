@@ -95,6 +95,10 @@
 	if(initial_ammo)
 		for(var/i in 1 to initial_ammo)
 			stored_ammo += new ammo_type(src)
+
+	pixel_x = rand(-10, 10)
+	pixel_y = rand(-10, 10)
+
 	update_icon()
 
 /obj/item/ammo_magazine/attackby(obj/item/weapon/W as obj, mob/user as mob)

@@ -354,6 +354,12 @@ area/space/atmosalert()
 	requires_power = 0
 	lighting_use_dynamic = 1
 
+/area/prishtina/helicopter_1/east_road
+	name = "\improper East Road Landing Site"
+	icon_state = "shuttle2"
+	requires_power = 0
+	lighting_use_dynamic = 1
+
 //////////////////////////////////////
 /area/prishtina/helicopter_2/nato_base
 	name = "\improper NATO base helipad"
@@ -385,6 +391,11 @@ area/space/atmosalert()
 	requires_power = 0
 	lighting_use_dynamic = 1
 
+/area/prishtina/helicopter_2/east_road
+	name = "\improper East Road Landing Site"
+	icon_state = "shuttlegrn2"
+	requires_power = 0
+	lighting_use_dynamic = 1
 
 
 
@@ -2299,6 +2310,10 @@ var/list/the_station_areas = list (
 /area/prishtina/dungeons
 	name = "\improper Dungeons"
 	icon_state = "dungeons"
+
+/area/prishtina/tunnel
+	name = "\improper Tunnel"
+	icon_state = "tunnel"
 
 /area/prishtina/vault
 	name = "\improper Vault"

@@ -95,7 +95,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/set_daytime,
 	/client/proc/toggle_autobalance,
 	/client/proc/show_battle_report,
-	/client/proc/generate_hit_table
+	/client/proc/generate_hit_table,
+	/client/proc/toggle_special_squads
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
@@ -1010,7 +1011,7 @@ var/list/admin_verbs_mentor = list(
 	var/color = modes[daytime]
 	config.starlight_color = color
 
-	world << "Changing daytime and weather to [daytime]. This may take a while. Be patient."
+	world << "<font size=3>Changing daytime and weather to [daytime]. This may take a while. Be patient.</font>"
 	spawn(10)
 		for(var/turf/T)
 			if(T.z == 1)
@@ -1037,6 +1038,8 @@ var/list/admin_verbs_mentor = list(
 
 	for(var/mob/living/carbon/human/H in human_mob_list)
 		if(H.stat == DEAD)
+			continue
+		if(!H.mind)
 			continue
 		var/datum/job/job = job_master.GetJob(H.mind.assigned_role)
 		if(!job)
@@ -1179,3 +1182,16 @@ var/list/admin_verbs_mentor = list(
 		dat += "</table>"
 
 	usr << browse(dat, "window='Hit table';size=800x400;can_close=1;can_resize=1;can_minimize=1;titlebar=1")
+
+/client/proc/toggle_special_squads()
+	set category = "Prishtina"
+	set name = "Toggle Special Squads"
+
+	if(ticker.current_state != GAME_STATE_PREGAME)
+		usr << "\red This option could be toggled only during pre-game state."
+		return
+
+	config.special_squads = !config.special_squads
+	job_master.SetupOccupations()
+
+	world << "<font size=3>Special squads are [config.special_squads ?  "enabled" : "disabled"] for this round.</font>"

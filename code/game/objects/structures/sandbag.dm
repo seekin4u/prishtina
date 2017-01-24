@@ -18,7 +18,7 @@
 /obj/structure/sandbag/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover, /obj/item/projectile))
 		return check_cover(mover, target)
-	if(get_dir(loc, target) == dir)
+	if(get_dir(get_turf(mover), target) == dir)
 		return 0
 	return 1
 
@@ -46,14 +46,14 @@
 /obj/structure/sandbag/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			PoolOrNew(/obj/structure/sandbag, src.loc)
-			PoolOrNew(/obj/structure/sandbag, src.loc)
-			PoolOrNew(/obj/structure/sandbag, src.loc)
+			PoolOrNew(/obj/item/weapon/ore/glass, src.loc)
+			PoolOrNew(/obj/item/weapon/ore/glass, src.loc)
+			PoolOrNew(/obj/item/weapon/ore/glass, src.loc)
 			qdel(src)
 			return
 		if(2.0)
-			PoolOrNew(/obj/structure/sandbag, src.loc)
-			PoolOrNew(/obj/structure/sandbag, src.loc)
+			PoolOrNew(/obj/item/weapon/ore/glass, src.loc)
+			PoolOrNew(/obj/item/weapon/ore/glass, src.loc)
 			qdel(src)
 			return
 		else

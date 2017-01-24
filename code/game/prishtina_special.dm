@@ -71,22 +71,22 @@ var/wlg_selected_border_tree = 0
 					new bushes(T)
 	return 1
 
-var/mission_announced = 0
 /hook/shuttle_move/proc/announce_mission_start()
-	if(mission_announced)
+	if(!ticker || !ticker.mode || ticker.mode.mission_started)
 		return 1
-	mission_announced = 1
+	ticker.mode.mission_started = 1
+	ticker.mode.mission_start_time = world.time
 
 	var/preparation_time = world.time - roundstart_time
 
-	world << "<font size=4>The NATO mission has started after [preparation_time / 600] minutes of preparation.</font>"
+	world << "<font size=4>The NATO mission has started after [round(preparation_time / 600)] minutes of preparation.</font>"
 	world << "<font size=3>Both sides are locked for joining.</font>."
 	ticker.can_latejoin_ruforce = 0
 	ticker.can_latejoin_enforce = 0
 	world << "<font size=3>Balance report: [job_master.enforce_count] EnForce, [job_master.ruforce_count] RuForce and [job_master.civilian_count] civilians.</font>"
 	var/ru_fireteams = 0
 	var/en_fireteams = 0
-	for(var/datum/fireteam/ft in job_master.fireteams)
+	for(var/datum/fireteam/ft in job_master.all_fireteams)
 		if(!ft.is_full())
 			continue
 		if(ft.side == RUFORCE)
@@ -94,7 +94,7 @@ var/mission_announced = 0
 		if(ft.side == ENFORCE)
 			en_fireteams++
 	world << "<font size=3>Fireteams report: [en_fireteams] EnForce full fireteams, [ru_fireteams] RuForce full otdeleniy and spec otryadov."
-	for(var/datum/fireteam/ft in job_master.fireteams)
+	for(var/datum/fireteam/ft in job_master.all_fireteams)
 		var/text = "[get_side_name(ft.side)] - [ft.code]"
 		if(ft.name)
 			text += " called as \"[ft.name]\"."

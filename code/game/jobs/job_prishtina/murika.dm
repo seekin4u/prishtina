@@ -81,7 +81,7 @@
 
 /////////////////////////
 /datum/job/engineer_american
-	title = "Engineer"
+	title = "Combat Engineer"
 	flag = ROBOTICIST
 	department_flag = MEDSCI
 	faction = "Station"
@@ -193,12 +193,12 @@ var/first_75th = 1
 	var/obj/item/clothing/suit/storage/vest/the75th_ghillie/G = new(H)
 	if(first_75th)
 		for(var/i = 1 to 4)
-			new /obj/item/ammo_magazine/a556x45(G)
+			new /obj/item/ammo_magazine/a556x45(G.pockets)
 		for(var/i = 1 to 2)
-			new /obj/item/ammo_magazine/c45m(G)
+			new /obj/item/ammo_magazine/c45m(G.pockets)
 	else
 		for(var/i = 1 to 6)
-			new /obj/item/ammo_magazine/a556/m4(G)
+			new /obj/item/ammo_magazine/a556/m4(G.pockets)
 
 	H.equip_to_slot_or_del(new /obj/item/weapon/paper/map(H), slot_l_store)
 

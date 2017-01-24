@@ -68,6 +68,9 @@
 	Stat()
 		..()
 
+		if(!client)
+			return
+
 		statpanel("Status")
 		if (client.statpanel == "Status" && ticker)
 			if (ticker.current_state != GAME_STATE_PREGAME)
@@ -430,7 +433,7 @@
 		var/prev_side = 0
 		dat += "Choose from the following open positions:<br>"
 		for(var/datum/job/job in job_master.occupations)
-			if(job && IsJobAvailable(job.title))
+			if(job)
 				var/active = 0
 				// Only players with the job assigned and AFK for less than 10 minutes count as active
 				for(var/mob/M in player_list) if(M.mind && M.client && M.mind.assigned_role == job.title && M.client.inactivity <= 10 * 60 * 10)
@@ -440,7 +443,10 @@
 					var/side_name = get_side_name(job.department_flag)
 					if(side_name)
 						dat += "[side_name]<br>"
-				dat += "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions]) (Active: [active])</a><br>"
+				if(IsJobAvailable(job.title))
+					dat += "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions]) (Active: [active])</a><br>"
+				else
+					dat += "[job.title] ([job.current_positions]) (Active: [active])<br>"
 
 		dat += "</center>"
 		src << browse(dat, "window=latechoices;size=300x640;can_close=1")

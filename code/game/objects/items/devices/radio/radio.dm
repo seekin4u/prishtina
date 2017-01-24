@@ -659,7 +659,7 @@
 
 
 /obj/item/device/radio/nato
-	name = "AN/PRC-148"
+	name = "AN/PRC-148 radio"
 	icon_state = "AN148"
 	freerange = 1
 	frequency = 1200
@@ -674,7 +674,7 @@
 
 
 /obj/item/device/radio/russia
-	name = "P-168-0.5"
+	name = "P-168-0.5 radio"
 	icon_state = "P168"
 	freerange = 1
 	frequency = 1599
